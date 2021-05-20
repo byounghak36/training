@@ -22,14 +22,14 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 &&
     update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
 
 RUN apt-get install -y virtualenv htop
-RUN pip install --upgrade --ignore-installed setuptools
-RUN pip install --upgrade numpy scipy sklearn tensorflow-gpu==2.2.0
+RUN pip install --upgrade numpy scipy sklearn tf-nightly-gpu
+#RUN pip install --upgrade numpy scipy sklearn tensorflow-gpu==2.2.0
 
 # Mount data into the docker
 ADD . /research/resnet
+ADD ./tf2 /research/resnet-tf2
 
 WORKDIR /research/resnet
 RUN pip install -r official/requirements.txt
 
 ENTRYPOINT ["/bin/bash"]
-

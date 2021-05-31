@@ -6,6 +6,9 @@
 
 set -e
 
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cyda/compat:/usr/lib/cuda/nvvm
+export XLA_FLAGS="--xla_gpu_cuda_data_dir=/usr/lib/cuda"
+
 # start timing 
 start=$(date +%s)
 start_fmt=$(date +%Y-%m-%d\ %r)
